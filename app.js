@@ -1,4 +1,4 @@
-var data = [
+(function(){var data = [
 {
 
 "paymentId" : 435456,
@@ -101,7 +101,8 @@ if(elem.innerHTML == 'Refunded'){
 }
 return elem;
 }
-grid(data, element, {formatting: {'paymentStatus': statusFormatter}, pageSize: 4, sorting: ['paymentId','orderDate','amount' ], filters: ['paymentStatus']}).Init()
+grid(data, element, {formatting: {'paymentStatus': statusFormatter}, pageSize: 4, sorting: ['paymentId','orderDate','amount' ], filters: ['paymentStatus']}).Init();
+})();
 
 
 
