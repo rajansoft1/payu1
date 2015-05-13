@@ -1,0 +1,30 @@
+.grid-header-cell{
+	float: left;
+	background: #DDD;
+	color: #000;
+	border-right: #000 1px solid;
+	padding: 10px;
+	font-weight: bold;
+}
+
+.grid-header{
+border: #000 1px solid;
+border-right: none;
+clear: both;
+width: 100%;
+}
+
+.grid-cell{
+	float: left;
+	color: #000;
+	border: #DEDEDE 1px solid;
+	padding: 10px;
+}
+.body{
+	font-family: verdana;
+	font-size: 14px;
+}
+
+.grid-row{
+	clear: both;
+}
