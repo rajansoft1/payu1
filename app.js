@@ -101,7 +101,7 @@ if(elem.innerHTML == 'Refunded'){
 }
 return elem;
 }
-grid(data, element, {formatting: {'paymentStatus': statusFormatter}, pageSize: 4, sorting: ['paymentId','orderDate','amount' ]}).Init()
+grid(data, element, {formatting: {'paymentStatus': statusFormatter}, pageSize: 4, sorting: ['paymentId','orderDate','amount' ], filters: ['paymentStatus']}).Init()
 
 
 
