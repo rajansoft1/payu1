@@ -82,4 +82,23 @@ var data = [
 ]
 
 var element = document.getElementById('myGrid');
-grid(data, element).Init()
+
+var statusFormatter = function(elem){
+if(elem.innerHTML == 'Initiated'){
+		elem.className += ' initiated';
+}
+if(elem.innerHTML == 'Failed'){
+		elem.className += ' failed';
+}
+if(elem.innerHTML == 'Dropped'){
+		elem.className += ' dropped';
+}
+if(elem.innerHTML == 'Success'){
+		elem.className += ' success';
+}
+if(elem.innerHTML == 'Refunded'){
+		elem.className += ' refunded';
+}
+return elem;
+}
+grid(data, element, {formatting: {'paymentStatus': statusFormatter}}).Init()

@@ -28,11 +28,29 @@ width: 100%;
 .grid-row{
 	clear: both;
 }
-.grid-fotter
+.grid-footer
 {
 	clear: both;
 	width: 100%;
 	padding: 10px;
 	border: #DEDEDE 1px solid;
 	border-top: none;
+}
+.initiated{
+	color: orange;
+}
+
+.failed{
+	color: red;
+}
+
+.dropped{
+	color: rgb(115, 7, 40);
+}
+
+.success{
+	color: green;
+}
+.refunded{
+	color: blue;
 }

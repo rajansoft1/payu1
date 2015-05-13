@@ -5,18 +5,19 @@ var grid = function(data, element, options){
 		headeClass: 'grid-header',
 		rowClass: 'grid-row',
 		cellClass: 'grid-cell',
-		fotterClass: 'grid-fotter',
+		footerClass: 'grid-footer',
 		conatinerClass: 'container',
 		gridClass: 'grid',
 		pageNumber: 1,
 		pageSize: 3,
 		isPaging: true,
+		formatting: {},
 		totalPages: function(){
 			return Math.ceil(data.length/this.pageSize)
 		}
 	}
 
-	options = options ? options.assign(defaultOptions) : defaultOptions;
+	options = options ? util.extend(defaultOptions, options) : defaultOptions;
 	var rows = []
 	var columns = []
 	var columnWidth = function(){
@@ -52,7 +53,7 @@ var grid = function(data, element, options){
 		var gridContainer = newDiv();
 		gridContainer.appendChild(renderHeader())
 		gridContainer.appendChild(renderBody())
-		gridContainer.appendChild(renderFotter())
+		gridContainer.appendChild(renderfooter())
 		return gridContainer
 	}
 
@@ -64,9 +65,9 @@ var grid = function(data, element, options){
 		options.pageNumber = options.pageNumber - 1;
 		bindData()
 	}
-	function renderFotter(){
-		var fotter = newDiv();
-		fotter.className = options.fotterClass;
+	function renderfooter(){
+		var footer = newDiv();
+		footer.className = options.footerClass;
 		var leftButton = document.createElement('Button');
 		leftButton.innerHTML = '<';
 		leftButton.onclick = previousPage;
@@ -76,13 +77,13 @@ var grid = function(data, element, options){
 		var currentPage = document.createElement('span');
 		currentPage.innerHTML = options.pageNumber + ' of ' + options.totalPages();
 		if(options.pageNumber > 1){
-		fotter.appendChild(leftButton)
+		footer.appendChild(leftButton)
 		}
-		fotter.appendChild(currentPage)
+		footer.appendChild(currentPage)
 		if(options.pageNumber < options.totalPages()){
-		fotter.appendChild(rightButton)
+		footer.appendChild(rightButton)
 		}
-		return fotter;
+		return footer;
 	}
 
 	function renderBody(){
@@ -93,7 +94,11 @@ var grid = function(data, element, options){
 			for(var i = 0;i< columns.length; i++) {
 			 var cell = addColumn();
 			 cell.innerHTML = rows[row][columns[i]];
+			 if(options.formatting.hasOwnProperty(columns[i])){
+			 	cell = options.formatting[columns[i]](cell);
+			 }
 			 cRow.appendChild(cell)
+			 
 			}
 			body.appendChild(cRow);
 		}
