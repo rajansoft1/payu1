@@ -5,11 +5,15 @@ var grid = function(data, element, options){
 		headeClass: 'grid-header',
 		rowClass: 'grid-row',
 		cellClass: 'grid-cell',
+		fotterClass: 'grid-fotter',
 		conatinerClass: 'container',
 		gridClass: 'grid',
 		pageNumber: 1,
 		pageSize: 3,
-		isPaging: true
+		isPaging: true,
+		totalPages: function(){
+			return Math.ceil(data.length/this.pageSize)
+		}
 	}
 
 	options = options ? options.assign(defaultOptions) : defaultOptions;
@@ -48,7 +52,37 @@ var grid = function(data, element, options){
 		var gridContainer = newDiv();
 		gridContainer.appendChild(renderHeader())
 		gridContainer.appendChild(renderBody())
+		gridContainer.appendChild(renderFotter())
 		return gridContainer
+	}
+
+	function nextPage(){
+		options.pageNumber = options.pageNumber + 1;
+		bindData()
+	}
+	function previousPage(){
+		options.pageNumber = options.pageNumber - 1;
+		bindData()
+	}
+	function renderFotter(){
+		var fotter = newDiv();
+		fotter.className = options.fotterClass;
+		var leftButton = document.createElement('Button');
+		leftButton.innerHTML = '<';
+		leftButton.onclick = previousPage;
+		var rightButton = document.createElement('Button');
+		rightButton.innerHTML = '>';
+		rightButton.onclick = nextPage;
+		var currentPage = document.createElement('span');
+		currentPage.innerHTML = options.pageNumber + ' of ' + options.totalPages();
+		if(options.pageNumber > 1){
+		fotter.appendChild(leftButton)
+		}
+		fotter.appendChild(currentPage)
+		if(options.pageNumber < options.totalPages()){
+		fotter.appendChild(rightButton)
+		}
+		return fotter;
 	}
 
 	function renderBody(){

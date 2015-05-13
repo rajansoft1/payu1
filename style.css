@@ -28,3 +28,11 @@ width: 100%;
 .grid-row{
 	clear: both;
 }
+.grid-fotter
+{
+	clear: both;
+	width: 100%;
+	padding: 10px;
+	border: #DEDEDE 1px solid;
+	border-top: none;
+}
