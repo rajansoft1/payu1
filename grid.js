@@ -58,7 +58,7 @@
 					return Number(val)
 				}
 				//check if val is date
-				if(util.idDate(val)){
+				if(util.isDate(val)){
 					return new Date(val)
 				}
 				return val;
@@ -90,8 +90,10 @@
 				filteData()
 				sortData()
 				element.appendChild(renderGrid())
+				if(options.filterBy){
 				document.getElementById(options.filterBy).focus();
 				document.getElementById(options.filterBy).setSelectionRange(options.filterText.length , options.filterText.length );
+			}
 			}	
 			// it will return grid element
 			function renderGrid(){

@@ -5,7 +5,7 @@ var util = {
               a[key] = b[key];
               return a;
           },
-          idDate: function(val) {
+          isDate: function(val) {
            var date = new Date(val);
             return !isNaN(date.valueOf());
           },
