@@ -65,16 +65,16 @@ var grid = function(data, element, options) {
         }
         // this function will sort the data 
     function sortData() {
-            if (!options.sortBy || !options.sortOrder) {
+            if (!options.sortBy) {
                 return
             }
             // function to compare data
             function compare(a, b) {
                 if (typedData(a[options.sortBy]) < typedData(b[options.sortBy])) {
-                    return -1;
+                    return  (options.sortOrder ? -1 : 1);
                 }
                 if (typedData(a[options.sortBy]) > typedData(b[options.sortBy])) {
-                    return 1;
+                    return (options.sortOrder ? 1 : -1);
                 }
                 return 0;
             }
@@ -109,7 +109,6 @@ var grid = function(data, element, options) {
             elem.onclick = function() {
                 if (options.sortBy == col) {
                     options.sortOrder = !options.sortOrder
-                    data = data.reverse();
                     bindData()
                 } else {
                     options.sortBy = col;
