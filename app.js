@@ -85,7 +85,7 @@
     			'Dropped': ' dropped',
     			'Success': ' success',
     			'Refunded': ' refunded'
-   			 }: 
+   			 }
    			 elem.className += statusFormatter['elem.innerHTML']
             return elem;
         }
