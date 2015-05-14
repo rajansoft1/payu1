@@ -87,7 +87,7 @@ var grid = function(data, element, options) {
         // this function renders grid
     function bindData() {
             element.innerHTML = '';
-            filteData()
+            filterData()
             sortData()
             element.appendChild(renderGrid())
             if (options.filterBy) {
@@ -183,7 +183,7 @@ var grid = function(data, element, options) {
             return elem
         }
         // it filters data based on single filter, it can be extended using array
-    function filteData() {
+    function filterData() {
             if (options.filterBy && options.filterText.length > 0) {
                 data = dataBackup.slice()
                 data = data.filter(function(obj) {
