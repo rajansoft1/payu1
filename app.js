@@ -80,21 +80,13 @@
 
     //formatter for status
     var statusFormatter = function(elem) {
-            if (elem.innerHTML == 'Initiated') {
-                elem.className += ' initiated';
-            }
-            if (elem.innerHTML == 'Failed') {
-                elem.className += ' failed';
-            }
-            if (elem.innerHTML == 'Dropped') {
-                elem.className += ' dropped';
-            }
-            if (elem.innerHTML == 'Success') {
-                elem.className += ' success';
-            }
-            if (elem.innerHTML == 'Refunded') {
-                elem.className += ' refunded';
-            }
+    	var statusClasses = {'Initiated': ' initiated',
+    			'Failed': ' failed',
+    			'Dropped': ' dropped',
+    			'Success': ' success',
+    			'Refunded': ' refunded'
+   			 }: 
+   			 elem.className += statusFormatter['elem.innerHTML']
             return elem;
         }
         //initiate grid
