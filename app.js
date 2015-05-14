@@ -87,21 +87,7 @@
     			'Refunded': ' refunded'
    			 }
    			 elem.className += statusClasses[elem.innerHTML]
-            if (elem.innerHTML == 'Initiated') {
-                elem.className += ' initiated';
-            }
-            if (elem.innerHTML == 'Failed') {
-                elem.className += ' failed';
-            }
-            if (elem.innerHTML == 'Dropped') {
-                elem.className += ' dropped';
-            }
-            if (elem.innerHTML == 'Success') {
-                elem.className += ' success';
-            }
-            if (elem.innerHTML == 'Refunded') {
-                elem.className += ' refunded';
-            }
+            
             return elem;
         }
         //initiate grid
