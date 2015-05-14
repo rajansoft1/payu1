@@ -1,5 +1,9 @@
 		var grid = function(data, element, options){
 			var self = this;
+			if(!Array.isArray(data)){
+				return new TypeError('Array is required to bind grid')
+			}
+
 			//this is default options for thr grid
 			var defaultOptions = {
 				headerCellClass: 'grid-header-cell',
@@ -36,6 +40,9 @@
 			// this method will initialize grid
 			function init(){
 				columns = getColumns()
+				if(columns.length == 0){
+					throw new TypeError('there are no columns')
+				}
 				bindData()
 			}
 			//this will return data  after all filters and sorting
