@@ -1,4 +1,3 @@
--
 var grid = function(data, element, options) {
     var self = this;
     if (!Array.isArray(data)) {
